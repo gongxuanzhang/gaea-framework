@@ -10,7 +10,7 @@ import java.time.Clock;
  *
  * {@link GaeaEvent}Gaea事件继承自Spring标准事件。
  * 也是Java Event的标准实现。
- * Gaea所有子类事件都可以和Spring监听组件兼容
+ * Gaea所有子类事件都可以和Spring监听组件兼容,可以直接使用Spring注册监听器的方式注册想监听的内容
  *
  * @author gxz gongxuanzhang@foxmail.com
  **/
