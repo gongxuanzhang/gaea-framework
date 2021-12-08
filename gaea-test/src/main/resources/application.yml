@@ -1,0 +1,14 @@
+gaea:
+  mongodb:
+    sys:
+      host: localhost
+      port: 27017
+      user: tincery
+      password: Txy123.com
+      database: tincery_sys
+    pro:
+      host: localhost
+      port: 27017
+      user: tincery
+      password: Txy123.com
+      database: tincery_pro

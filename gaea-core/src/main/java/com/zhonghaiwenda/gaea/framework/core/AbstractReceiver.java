@@ -18,7 +18,7 @@ import org.springframework.context.ApplicationEventPublisherAware;
  * @author gxz gongxuanzhang@foxmail.com
  **/
 @Slf4j
-public abstract class BaseReceiver<R, I> implements Receiver<R>, ApplicationEventPublisherAware {
+public abstract class AbstractReceiver<R, I> implements Receiver<R>, ApplicationEventPublisherAware {
 
 
     @Getter

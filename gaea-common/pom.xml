@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>gaea-common</artifactId>
+    <packaging>pom</packaging>
     <description>gaea通用组件，可以随意拆卸组装</description>
+    <modules>
+        <module>gaea-common-mongodb-springboot-starter</module>
+    </modules>
 
 </project>
