@@ -3,7 +3,7 @@ package com.zhonghaiwenda.gaea.framework.core.event;
 import lombok.Getter;
 
 /**
- * 在Receive 解析数据源之前的事件
+ * 在Receive 适配数据源之后的事件
  *
  * @author gxz gongxuanzhang@foxmail.com
  **/

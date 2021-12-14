@@ -23,6 +23,7 @@ public interface ResourceAdapter<R,I> {
     /**
      *
      * 是否支持适配内容
+     * @return 返回true 这个Object 就会进入到R中
      **/
     boolean support(Object resource);
 

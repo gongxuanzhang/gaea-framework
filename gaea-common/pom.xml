@@ -14,6 +14,9 @@
     <description>gaea通用组件，可以随意拆卸组装</description>
     <modules>
         <module>gaea-common-mongodb-springboot-starter</module>
+        <module>gaea-common-minio-springboot-starter</module>
     </modules>
+
+
 
 </project>

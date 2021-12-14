@@ -7,17 +7,17 @@ package com.zhonghaiwenda.gaea.framework.core.filter;
  **/
 
 @FunctionalInterface
-public interface GaeaFilter<Data> {
+public interface GaeaFilter<DATA> {
 
     /**
      * 执行过滤
-     * 在过滤器中务必使用 {@link GaeaFilterContext#doFilter()}方法
+     * 在过滤器中务必使用 {@link GaeaFilterContext#doFilter(Object)} )}方法
      * 否则过滤器将不会向下执行
      * 过滤过程中可以对原始数据状态进行改变 或者包装
      *
      * @param data    过滤的数据
      * @param context 过滤器上下文
      **/
-    void doFilter(Data data, GaeaFilterContext context);
+    void doFilter(DATA data, GaeaFilterContext<DATA> context);
 
 }

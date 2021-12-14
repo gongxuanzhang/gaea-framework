@@ -11,13 +11,15 @@ public abstract class AlarmFilter<DATA> implements GaeaFilter<DATA> {
 
 
     @Override
-    public void doFilter(DATA data, GaeaFilterContext context) {
+    public void doFilter(DATA data, GaeaFilterContext<DATA> context) {
         Alarm alarm = createIfNecessary(data);
-        if(alarm != null){
+        if (alarm != null) {
             // todo 告警之后怎么处理
-
+            if (context instanceof AlarmContext) {
+                ((AlarmContext) context).appendAlarm(alarm);
+            }
         }
-        context.doFilter();
+        context.doFilter(data);
     }
 
 

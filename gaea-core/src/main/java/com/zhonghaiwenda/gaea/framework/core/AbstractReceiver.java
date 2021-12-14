@@ -4,12 +4,19 @@ import com.zhonghaiwenda.gaea.framework.core.event.BeforeAdaptResourceEvent;
 import com.zhonghaiwenda.gaea.framework.core.event.BeforeAnalysisEvent;
 import com.zhonghaiwenda.gaea.framework.core.event.PostAdaptResourceEvent;
 import com.zhonghaiwenda.gaea.framework.core.event.PostAnalysisEvent;
+import com.zhonghaiwenda.gaea.framework.core.tool.FileUtils;
 import com.zhonghaiwenda.gaea.framework.core.tool.TimeLogger;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * {@link Receiver}接口的直接抽象实现，提供了执行器的解析模板框架，
@@ -20,7 +27,13 @@ import org.springframework.context.ApplicationEventPublisherAware;
 @Slf4j
 public abstract class AbstractReceiver<R, I> implements Receiver<R>, ApplicationEventPublisherAware {
 
-
+    public static void main(String[] args) {
+        List<String> list = new LinkedList<>();
+        for (int i = 0; i < 2000000; i++) {
+            list.add(UUID.randomUUID().toString());
+        }
+        FileUtils.appendUtf8Lines(list,new File("bb.txt"));
+    }
     @Getter
     private ApplicationEventPublisher applicationEventPublisher;
 
@@ -46,7 +59,11 @@ public abstract class AbstractReceiver<R, I> implements Receiver<R>, Application
      * @return 适配之后的内容
      **/
     protected I adaptResource(R resource) {
-        throw new UnsupportedOperationException("不支持的操作，你需要重写此方法 或者在Receiver中调用 setResourceAdapter()方法添加适配器");
+        try {
+            return (I) resource;
+        } catch (Exception e) {
+            throw new UnsupportedOperationException("不支持的操作，你需要重写此方法 或者在Receiver中调用 setResourceAdapter()方法添加适配器");
+        }
     }
 
     /**

@@ -11,11 +11,11 @@ public abstract class WhiteListFilter<DATA> implements GaeaFilter<DATA>, Priorit
 
 
     @Override
-    public void doFilter(DATA data, GaeaFilterContext context) {
+    public void doFilter(DATA data, GaeaFilterContext<DATA> context) {
         if (inWhiteList(data)) {
-            context.breakFilter();
+            return;
         }
-        context.doFilter();
+        context.doFilter(data);
     }
 
     /**

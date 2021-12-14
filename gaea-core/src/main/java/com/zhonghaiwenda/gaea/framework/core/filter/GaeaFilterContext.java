@@ -8,28 +8,22 @@ import java.util.List;
  *
  * @author gxz gongxuanzhang@foxmail.com
  **/
-public interface GaeaFilterContext {
+public interface GaeaFilterContext<D> {
 
     /**
      *
      * 拿到当前责任链中的所有过滤器
      * @return 返回个啥
      **/
-    List<GaeaFilter<?>> getFilters();
+    List<GaeaFilter<D>> getFilters();
 
     /**
      *
      * 执行下一个过滤
      *
      **/
-    void doFilter();
+    void doFilter(D data);
 
-    /**
-     *
-     * 不进行接下来的过滤行为 直接跳出过滤链
-     *
-     **/
-    void breakFilter();
 
 
 }

@@ -27,7 +27,7 @@ public interface SyncAlternative {
 
     /**
      *
-     * 设置线程池, 如果线程池被提供，在多线程环境下将会使用 {@link this#getExecutorService()}的返回值作为执行的线程池
+     * 设置线程池, 如果线程池被提供，在多线程环境下将会使用 {@link #getExecutorService()}的返回值作为执行的线程池
      * @param threadPoll 提供线程池;
      *
      **/

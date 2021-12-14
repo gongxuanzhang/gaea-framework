@@ -1,38 +1,56 @@
 package com.zhonghaiwenda.gaea.framework.core.analysor;
 
 
+import com.zhonghaiwenda.gaea.framework.core.handle.ErrorHandle;
+import com.zhonghaiwenda.gaea.framework.core.handle.LineAnalysisHandle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+
 /**
  * 解析器的模板实现，定义了解析的声明周期内容
  *
  * @author gxz gongxuanzhang@foxmail.com
  **/
 
-public class AbstractAnalyser<IN, OUT> implements Analyser<IN, OUT> {
+public abstract class AbstractAnalyser<IN, OUT> implements Analyser<IN, OUT> {
 
 
     protected PackFactory<IN, OUT> factory;
 
+    @Autowired(required = false)
+    protected List<LineAnalysisHandle> errorHandle;
+
     @Override
     public OUT analyse(IN input) {
-        OUT pack = null;
-        if (factory == null) {
-            pack = pack(input);
-        } else {
-            pack = factory.pack(input);
+        try {
+            if (factory == null) {
+                return pack(input);
+            }
+            return factory.pack(input);
+        } catch (Exception e) {
+            errorHandle(input, e);
+            return null;
         }
-
-
-        return null;
     }
 
+    protected void errorHandle(IN input, Exception e) {
+        if (!CollectionUtils.isEmpty(errorHandle)) {
+            for (ErrorHandle handle : errorHandle) {
+                handle.handle(input, e);
+            }
+        }
+    }
 
 
     /**
      * 注入包装工厂，如果此方法没有调用。那子类需要实现pack方法。
      * 否则在解析时会抛出异常
-     * @param factory 包装工厂
      *
+     * @param factory 包装工厂
      **/
+    @Autowired(required = false)
     public void setFactory(PackFactory<IN, OUT> factory) {
         this.factory = factory;
     }

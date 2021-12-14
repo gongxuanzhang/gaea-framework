@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.zhonghaiwenda.gaea.framework.core.environment.GaeaEnvironmentAutoConfiguration
+
+
+org.springframework.context.ApplicationContextInitializer = com.zhonghaiwenda.gaea.framework.core.environment.GaeaPropertyFilePathConfiguration

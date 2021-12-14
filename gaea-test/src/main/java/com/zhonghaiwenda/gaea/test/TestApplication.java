@@ -1,17 +1,12 @@
 package com.zhonghaiwenda.gaea.test;
 
-import com.zhonghaiwenda.gaea.test.dao.User;
-import com.zhonghaiwenda.gaea.test.dao.UserDAO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zhonghaiwenda.gaea.common.minio.component.MinioTemplate;
+import com.zhonghaiwenda.gaea.framework.core.Receiver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
-import javax.annotation.PostConstruct;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
 
 /**
  * @author gxz gongxuanzhang@foxmail.com
@@ -19,17 +14,14 @@ import java.util.Map;
 @SpringBootApplication
 public class TestApplication {
 
-    @Autowired
-    ApplicationContext applicationContext;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(TestApplication.class, args);
-        UserDAO bean = run.getBean(UserDAO.class);
-
-    }
-
-    @PostConstruct
-    public void init(){
-
+//        Receiver<File> bean = run.getBean(Receiver.class);
+//        bean.receive(new File("/Users/gongxuanzhang/Desktop/cerinfo_1637657925768412.json"));
+        MinioTemplate bean = run.getBean(MinioTemplate.class);
+        System.out.println(bean.bucketIsExists("zhangsan"));
+        System.out.println(bean.createBucket("zhangsan"));
+        System.out.println(bean.bucketIsExists("zhangsan"));
     }
 }

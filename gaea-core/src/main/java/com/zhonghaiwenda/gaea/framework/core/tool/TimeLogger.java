@@ -32,14 +32,19 @@ public class TimeLogger {
     }
 
 
+    /**
+     * 开始计时
+     *
+     * @param print 是否打印日志
+     **/
     public void start(boolean print) {
         this.startTimeMill = System.currentTimeMillis();
-        if(print){
-            log.info("任务{}开始于{}",this.taskName,formatMill(this.startTimeMill));
+        if (print) {
+            log.info("任务{}开始于{}", this.taskName, formatMill(this.startTimeMill));
         }
     }
 
-    public void start(){
+    public void start() {
         start(true);
     }
 
