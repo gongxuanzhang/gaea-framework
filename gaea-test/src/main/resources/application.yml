@@ -13,10 +13,10 @@ gaea:
       password: Txy123.com
       database: tincery_pro
   minio:
-    host: localhost
+    host: 172.16.1.111
     port: 9000
     username: admin
-    password: 12345678
+    password: password
 spring:
   application:
     name: src_test
