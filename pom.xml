@@ -16,6 +16,7 @@
         <module>gaea-core</module>
         <module>gaea-common</module>
         <module>gaea-test</module>
+        <module>gaea-monitor</module>
     </modules>
 
 

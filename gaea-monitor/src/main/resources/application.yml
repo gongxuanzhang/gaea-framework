@@ -1,0 +1,21 @@
+server:
+  port: 8111
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+  application:
+    name: src_monitor
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:8111
+        username: admin
+        password: 123456
+management:
+  endpoint:
+    health:
+      show-details: always
+

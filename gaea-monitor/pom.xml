@@ -9,43 +9,35 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gaea-test</artifactId>
+    <artifactId>gaea-monitor</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
-
     <dependencies>
-        <dependency>
-            <groupId>com.zhonghaiwenda</groupId>
-            <artifactId>gaea-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>com.zhonghaiwenda</groupId>
-            <artifactId>gaea-common-mongodb-springboot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>2.4.4</version>
         </dependency>
+
         <dependency>
-            <groupId>com.zhonghaiwenda</groupId>
-            <artifactId>gaea-common-minio-springboot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.9.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+<!--            <version>2021.1</version>-->
+<!--        </dependency>-->
+
 
         <dependency>
             <groupId>de.codecentric</groupId>
@@ -54,7 +46,5 @@
         </dependency>
 
 
-
     </dependencies>
-
 </project>
