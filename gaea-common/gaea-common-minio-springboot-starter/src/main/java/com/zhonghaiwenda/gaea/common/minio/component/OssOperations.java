@@ -96,6 +96,15 @@ public interface OssOperations<C> {
     List<Item> listBucket(String bucketName);
 
 
+    /**
+     *
+     * 返回桶的使用大小
+     * @param bucketName 桶名称
+     * @return 返回当前桶的使用字节大小
+     **/
+    long bucketSize(String bucketName);
+
+
 
 
   //  other

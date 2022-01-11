@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -142,7 +143,6 @@ public class MinioTemplate implements UnsafeOssOperations<MinioClient> {
     }
 
 
-
     @Override
     public List<Bucket> findAllBucket() {
         try {
@@ -155,9 +155,9 @@ public class MinioTemplate implements UnsafeOssOperations<MinioClient> {
     @Override
     public List<Item> listBucket(String bucketName) {
         ListObjectsArgs args = ListObjectsArgs.builder().bucket(bucketName).build();
-        Iterable<Result<Item>> results = this.client.listObjects(args);
-        List<Item> result = new ArrayList<>();
-        for (Result<Item> item : results) {
+        Iterable<Result<Item>> items = this.client.listObjects(args);
+        List<Item> result = new LinkedList<>();
+        for (Result<Item> item : items) {
             try {
                 result.add(item.get());
             } catch (Exception e) {
@@ -165,6 +165,21 @@ public class MinioTemplate implements UnsafeOssOperations<MinioClient> {
             }
         }
         return result;
+    }
+
+    @Override
+    public long bucketSize(String bucketName) {
+        ListObjectsArgs args = ListObjectsArgs.builder().bucket(bucketName).build();
+        Iterable<Result<Item>> items = this.client.listObjects(args);
+        long bucketSize = 0L;
+        for (Result<Item> item : items) {
+            try {
+                bucketSize += item.get().size();
+            } catch (Exception e) {
+                log.error("桶{},获取对象出现问题{}", bucketName, e.getMessage());
+            }
+        }
+        return bucketSize;
     }
 
     @Override
